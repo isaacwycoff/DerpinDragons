@@ -13,7 +13,10 @@ namespace DerpinDragons
         {
             Console.WriteLine("DERPIN' DRAGONS!");
 
-
+            using (var game = new DerpinGame())
+            {
+                game.Run();
+            }
         }
 
     }
