@@ -1,4 +1,5 @@
-﻿using DerpinDragons.Services;
+﻿using DerpinDragons.Entities;
+using DerpinDragons.Services;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -33,10 +34,21 @@ namespace DerpinDragons
         {
             ContentService.LoadAllTextures(Content);
             this.Graphics.LoadContent(this.Content);
+
+            //TODO this is proto code, get it out of here eventually
+            WorldService.AddEntity(EntityFactory.CreatePlayer(new Vector2(100,100)));
         }
 
         protected override void Update(GameTime gameTime)
         {
+            //dont hate me
+#if DEBUG
+            if(InputService.IsActionHeld(new []{ Microsoft.Xna.Framework.Input.Keys.Escape }))
+            {
+                this.Exit();
+            }
+#endif
+
             InputService.Update(gameTime);
             WorldService.Update(gameTime);
             base.Update(gameTime);
