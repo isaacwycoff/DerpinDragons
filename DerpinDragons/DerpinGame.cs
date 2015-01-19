@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DerpinDragons.Services;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -22,17 +23,22 @@ namespace DerpinDragons
 
         protected override void Initialize()
         {
+            InputService.Initialize();
             this.Graphics.Initialize(this.GraphicsDevice);
-            base.Initialize();          // this MUST happen at the end, 'cause XNA blows.
+            WorldService.Initialize();
+            base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            ContentService.LoadAllTextures(Content);
             this.Graphics.LoadContent(this.Content);
         }
 
         protected override void Update(GameTime gameTime)
         {
+            InputService.Update(gameTime);
+            WorldService.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -47,7 +53,5 @@ namespace DerpinDragons
         {
 
         }
-
-
     }
 }

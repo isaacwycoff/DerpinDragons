@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DerpinDragons
+namespace DerpinDragons.Services
 {
     public class GraphicsService
     {
@@ -19,8 +19,6 @@ namespace DerpinDragons
         private GraphicsDevice GraphicsDevice { get; set; }
         private GraphicsDeviceManager GraphicsDeviceManager { get; set; }
 
-        private SpriteFont Font { get; set; }
-
         public GraphicsService(Game game)
         {
             // this.GraphicsDevice = graphicsDevice;
@@ -31,7 +29,7 @@ namespace DerpinDragons
             this.GraphicsDeviceManager.IsFullScreen = IsFullScreen;
         }
 
-       public void Initialize(GraphicsDevice graphicsDevice)
+        public void Initialize(GraphicsDevice graphicsDevice)
         {
             this.GraphicsDevice = graphicsDevice;
         }
@@ -39,8 +37,6 @@ namespace DerpinDragons
         public void LoadContent(ContentManager contentManager)
         {
             this.SpriteBatch = new SpriteBatch(this.GraphicsDevice);
-
-            this.Font = contentManager.Load<SpriteFont>("FixedFont");
         }
 
         public void Draw(GameTime gameTime)
@@ -53,7 +49,17 @@ namespace DerpinDragons
                 depthStencilState: DepthStencilState.Default,
                 rasterizerState: RasterizerState.CullNone);
 
-            SpriteBatch.DrawString(this.Font, "DERPIN' DRAGONS", Vector2.Zero, Color.AntiqueWhite);
+            //TODO viewArea would come from camera that doesn't exist yet
+            var viewArea = new Rectangle(0, 0, ScreenWidth, ScreenHeight);
+            var drawableEntities = WorldService.GetEntitiesInViewableArea(viewArea);
+
+            foreach (var entity in drawableEntities)
+            {
+                var drawInfo = entity.GetRenderInfo();
+                SpriteBatch.Draw(drawInfo.Texture, drawInfo.DrawPosition, null, Color.White, 0f, drawInfo.Origin, 1f, SpriteEffects.None, .5f);
+            }
+
+            SpriteBatch.DrawString(ContentService.FixedFont, "DERPIN' DRAGONS", Vector2.Zero, Color.AntiqueWhite);
 
             SpriteBatch.End();
         }

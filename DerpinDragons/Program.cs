@@ -11,10 +11,9 @@ namespace DerpinDragons
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("DERPIN' DRAGONS!");
-
             using (var game = new DerpinGame())
             {
+                game.IsMouseVisible = true;
                 game.Run();
             }
         }

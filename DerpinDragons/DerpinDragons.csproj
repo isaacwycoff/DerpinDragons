@@ -43,18 +43,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DerpinGame.cs" />
-    <Compile Include="GraphicsService.cs" />
+    <Compile Include="Entities\Brains\BrainComponentBase.cs" />
+    <Compile Include="Entities\Brains\PlayerBrain.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityFactory.cs" />
+    <Compile Include="Entities\EntityRenderInfo.cs" />
+    <Compile Include="Input\InputActionDefinitions.cs" />
+    <Compile Include="Services\ContentService.cs" />
+    <Compile Include="Services\GraphicsService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\InputService.cs" />
+    <Compile Include="Services\WorldService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <Content Include="Content\DevFont.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\FixedFont.xnb">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\DevTexture.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
