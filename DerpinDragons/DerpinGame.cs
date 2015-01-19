@@ -16,20 +16,19 @@ namespace DerpinDragons
         {
             this.Graphics = new GraphicsService(this);
 
+            Content.RootDirectory = "Content";
+
         }
 
         protected override void Initialize()
         {
-            base.Initialize();
             this.Graphics.Initialize(this.GraphicsDevice);
+            base.Initialize();          // this MUST happen at the end, 'cause XNA blows.
         }
 
         protected override void LoadContent()
         {
-            this.Graphics.LoadContent();
-
-
-            // var spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.Graphics.LoadContent(this.Content);
         }
 
         protected override void Update(GameTime gameTime)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace DerpinDragons
         private GraphicsDevice GraphicsDevice { get; set; }
         private GraphicsDeviceManager GraphicsDeviceManager { get; set; }
 
+        private SpriteFont Font { get; set; }
+
         public GraphicsService(Game game)
         {
             // this.GraphicsDevice = graphicsDevice;
@@ -33,9 +36,11 @@ namespace DerpinDragons
             this.GraphicsDevice = graphicsDevice;
         }
 
-        public void LoadContent()
+        public void LoadContent(ContentManager contentManager)
         {
             this.SpriteBatch = new SpriteBatch(this.GraphicsDevice);
+
+            this.Font = contentManager.Load<SpriteFont>("FixedFont");
         }
 
         public void Draw(GameTime gameTime)
@@ -48,8 +53,9 @@ namespace DerpinDragons
                 depthStencilState: DepthStencilState.Default,
                 rasterizerState: RasterizerState.CullNone);
 
-            SpriteBatch.End();
+            SpriteBatch.DrawString(this.Font, "DERPIN' DRAGONS", Vector2.Zero, Color.AntiqueWhite);
 
+            SpriteBatch.End();
         }
 
         public void Update(GameTime gameTime)
