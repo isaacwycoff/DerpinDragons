@@ -35,13 +35,12 @@ namespace DerpinDragons
             ContentService.LoadAllTextures(Content);
             this.Graphics.LoadContent(this.Content);
 
-            //TODO this is proto code, get it out of here eventually
-            WorldService.AddEntity(EntityFactory.CreatePlayer(new Vector2(100,100)));
+            //TODO this deserves a better place than initialize
+            WorldService.BeginGame();
         }
 
         protected override void Update(GameTime gameTime)
         {
-            //dont hate me
 #if DEBUG
             if(InputService.IsActionHeld(new []{ Microsoft.Xna.Framework.Input.Keys.Escape }))
             {

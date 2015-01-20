@@ -16,6 +16,7 @@ namespace DerpinDragons.Entities
 
         public Vector2 Position;//TODO move to physics component?
         private Vector2 DrawOrigin;//TODO move to animation system
+        private Vector2 DrawDimensions;
 
         public Entity(Texture2D texture, BrainComponentBase brain, Vector2 position, Vector2 drawOrigin)
         {
