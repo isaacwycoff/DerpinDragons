@@ -52,6 +52,8 @@
     <Compile Include="Entities\EntityFactory.cs" />
     <Compile Include="Entities\EntityRenderInfo.cs" />
     <Compile Include="Entities\States\EntityStateBase.cs" />
+    <Compile Include="Entities\States\PlayerIdleState.cs" />
+    <Compile Include="Entities\States\PlayerStateBase.cs" />
     <Compile Include="Input\InputActionDefinitions.cs" />
     <Compile Include="Services\ContentService.cs" />
     <Compile Include="Services\GraphicsService.cs" />

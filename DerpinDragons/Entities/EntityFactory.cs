@@ -1,4 +1,5 @@
 ﻿using DerpinDragons.Entities.Brains;
+using DerpinDragons.Entities.States;
 using DerpinDragons.Services;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,8 +15,10 @@ namespace DerpinDragons.Entities
     {
         public static Entity CreatePlayer(Vector2 position)
         {
+            var playerStartState = new PlayerIdleState(null);
             var playerBrain = new PlayerBrain();
-            var entity = new Entity(ContentService.DerpyDwarf, playerBrain, position, new Vector2(6, 6));//TODO yeah yeah it's not done yet, just getting the patterns out there
+            var entity = new Entity(playerBrain, position, ContentService.DerpyDwarfAnimationSet, playerStartState);//TODO yeah yeah it's not done yet, just getting the patterns out there
+            entity.InitializeState(playerStartState);
 
             return entity;
         }

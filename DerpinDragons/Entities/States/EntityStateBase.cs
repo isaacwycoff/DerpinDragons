@@ -1,4 +1,4 @@
-﻿using DerpinDragons.Entities.Animation;
+﻿using DerpinDragons.Entities.Animations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +8,24 @@ using System.Threading.Tasks;
 namespace DerpinDragons.Entities.States
 {
     //does animation behind the scenes
-    abstract class EntityStateBase
+    public abstract class EntityStateBase
     {
         protected Entity Context;
-        protected Animation
+        protected Animation CurrentAnimation;
 
         protected EntityStateBase(EntityStateBase previousState)
         {
-            Context = previousState.Context;
+            if (previousState != null)
+            {
+                Context = previousState.Context;
+            }
         }
 
-        protected EntityStateBase(Entity context)
+        public abstract AnimationDefinitions GetCurrentAnimation();
+
+        public RenderableFrameForDirection GetCurrentRenderableFrame()
         {
-            Context = context;
+            return CurrentAnimation.GetCurrentFrame().GetRenderableFrameForDirection(Context.Rotation);
         }
-
-        public abstract Animations GetCurrentAnimation
     }
 }
