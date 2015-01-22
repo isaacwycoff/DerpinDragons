@@ -11,9 +11,9 @@ namespace DerpinDragons.Entities.Brains
     {
         protected Entity Context;
 
-        public BrainComponentBase(Entity entity)
-        { 
-            this.Context = entity;
+        public BrainComponentBase(Entity context)
+        {
+            this.Context = context;
         }
 
         public abstract void Update(GameTime gameTime);

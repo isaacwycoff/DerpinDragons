@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DerpinDragons.Entities.States
 {
-    public class PlayerIdleState : PlayerStateBase
-    {
-        public PlayerIdleState(PlayerStateBase previousState)
-            :base(previousState)
-        {
+    //public class PlayerIdleState : PlayerStateBase
+    //{
+    //    public PlayerIdleState(PlayerStateBase previousState)
+    //        :base(previousState)
+    //    {
 
-        }
+    //    }
 
 
-    }
+    //}
 }

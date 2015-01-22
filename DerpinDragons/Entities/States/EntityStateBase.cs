@@ -13,12 +13,16 @@ namespace DerpinDragons.Entities.States
         protected Entity Context;
         protected Animation CurrentAnimation;
 
+        protected EntityStateBase(Entity entity)
+        {
+            Context = entity;
+            CurrentAnimation = Context.AnimationSet[GetCurrentAnimation()];
+        }
+
         protected EntityStateBase(EntityStateBase previousState)
         {
-            if (previousState != null)
-            {
-                Context = previousState.Context;
-            }
+            Context = previousState.Context;
+            CurrentAnimation = Context.AnimationSet[GetCurrentAnimation()];
         }
 
         public abstract AnimationDefinitions GetCurrentAnimation();

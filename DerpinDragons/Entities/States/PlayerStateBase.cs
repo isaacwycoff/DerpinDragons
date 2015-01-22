@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DerpinDragons.Entities.States
 {
-    public class PlayerStateBase : EntityStateBase
-    {
-        protected PlayerStateBase(PlayerStateBase previousState)
-            :base(previousState)
-        {
+    //public class PlayerStateBase : EntityStateBase
+    //{
+    //    protected PlayerStateBase(PlayerStateBase previousState)
+    //        :base(previousState)
+    //    {
             
-        }
+    //    }
 
-        //here would be helper methods?
-    }
+    //    //here would be helper methods?
+    //}
 }

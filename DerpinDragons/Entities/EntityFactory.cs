@@ -15,10 +15,12 @@ namespace DerpinDragons.Entities
     {
         public static Entity CreatePlayer(Vector2 position)
         {
-            var playerStartState = new PlayerIdleState(null);
-            var playerBrain = new PlayerBrain();
-            var entity = new Entity(playerBrain, position, ContentService.DerpyDwarfAnimationSet, playerStartState);//TODO yeah yeah it's not done yet, just getting the patterns out there
-            entity.InitializeState(playerStartState);
+            
+            var entity = new Entity(position, ContentService.DerpyDwarfAnimationSet);//, playerStartState);//TODO yeah yeah it's not done yet, just getting the patterns out there
+            var playerBrain = new PlayerBrain(entity);
+            var playerStartState = new ProtoIdleState(entity);// new PlayerIdleState(null);
+
+            entity.Initialize(playerStartState, playerBrain);
 
             return entity;
         }

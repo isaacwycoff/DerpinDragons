@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace DerpinDragons.Entities.Brains
 {
-    class PlayerBrain : BrainComponentBase
+    public class PlayerBrain : BrainComponentBase
     {
-        public PlayerBrain()
+        public PlayerBrain(Entity context)
+            :base(context)
         { }
 
         public override void Update(GameTime gameTime)
