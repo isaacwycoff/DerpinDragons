@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DerpinDragons.Entities.Animations
 {
-    public class Animation
+    class Animation
     {
         private AnimationFrame[] AnimationFrames;
         private TickTimer FrameTimer;

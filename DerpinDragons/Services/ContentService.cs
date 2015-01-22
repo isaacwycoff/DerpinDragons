@@ -1,6 +1,4 @@
-﻿using DerpinDragons.Entities.Animations;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -12,20 +10,12 @@ namespace DerpinDragons.Services
 {
     public static class ContentService
     {
-        //dev
         public static Texture2D DevTexture;
         public static SpriteFont DevFont;
 
-        //textures
         public static Texture2D DerpyDwarf;
 
-        //animations
-        public static Dictionary<AnimationDefinitions, Animation> DerpyDwarfAnimationSet;
-
-        //fonts
         public static SpriteFont FixedFont;
-
-
 
         public static void LoadAllTextures(ContentManager content)
         {
@@ -34,35 +24,6 @@ namespace DerpinDragons.Services
 
             DerpyDwarf = SafeLoadTexture(content, "DerpyDwarf");
             FixedFont = SafeLoadFont(content, "FixedFont");
-
-            DerpyDwarfAnimationSet = SafeLoadAnimationSet("DerpyDwarf");
-        }
-
-        private static Dictionary<AnimationDefinitions, Animation> SafeLoadAnimationSet(string fileName)
-        {
-            //TODO this should be loaded from a file, but for now it's hardcoded
-
-            return new Dictionary<AnimationDefinitions, Animation>()
-            {
-                { 
-                    AnimationDefinitions.Idle, 
-                    new Animation(new AnimationFrame[] 
-                    {
-                        new AnimationFrame(
-                            1000, 
-                            new []{ new Vector2(20,20) },
-                            new []{ new Vector2(1,1) },
-                            new Rectangle?[]{ null },
-                            new []{ DevTexture }),
-                        new AnimationFrame(
-                            1000, 
-                            new []{ new Vector2(20,20) },
-                            new []{ new Vector2(1,1) },
-                            new Rectangle?[]{ null },
-                            new []{ DevTexture })
-                    })
-                }
-            };
         }
 
         private static Texture2D SafeLoadTexture(ContentManager content, string textureName)
@@ -88,6 +49,5 @@ namespace DerpinDragons.Services
                 return DevFont;
             }
         }
-
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DerpinDragons.Entities.Animations
 {
-    public enum AnimationDefinitions
+    enum AnimationDefinitions
     {
         Vitruvian,
 

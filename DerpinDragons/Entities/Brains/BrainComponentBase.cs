@@ -11,8 +11,11 @@ namespace DerpinDragons.Entities.Brains
     {
         protected Entity Context;
 
-        public BrainComponentBase(Entity entity)
-        { 
+        public BrainComponentBase()
+        { }
+
+        public void Sire(Entity entity)
+        {
             this.Context = entity;
         }
 

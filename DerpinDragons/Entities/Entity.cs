@@ -1,6 +1,4 @@
-﻿using DerpinDragons.Entities.Animations;
-using DerpinDragons.Entities.Brains;
-using DerpinDragons.Entities.States;
+﻿using DerpinDragons.Entities.Brains;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -14,18 +12,21 @@ namespace DerpinDragons.Entities
     public class Entity
     {
         private BrainComponentBase Brain;
-
-        public Dictionary<AnimationDefinitions, Animation> AnimationSet;
+        private Texture2D Texture;
 
         public Vector2 Position;//TODO move to physics component?
-        public float Rotation;
+        private Vector2 DrawOrigin;//TODO move to animation system
+        private Vector2 DrawDimensions;
 
-        EntityStateBase CurrentState;
-
-        public Entity(Vector2 position, Dictionary<AnimationDefinitions, Animation> animationSet)
+        public Entity(Texture2D texture, BrainComponentBase brain, Vector2 position, Vector2 drawOrigin)
         {
+            this.Brain = brain;
+            this.Texture = texture;
+
             this.Position = position;
-            this.AnimationSet = animationSet;
+            this.DrawOrigin = drawOrigin;
+
+            brain.Sire(this);
         }
 
         public void Update(GameTime gameTime)
@@ -35,17 +36,10 @@ namespace DerpinDragons.Entities
 
         public EntityRenderInfo GetRenderInfo()
         {
-            var currentFrame = CurrentState.GetCurrentRenderableFrame();
             return new EntityRenderInfo(
                 Position,
-                currentFrame.Origin,
-                currentFrame.Texture);
-        }
-
-        public void Initialize(EntityStateBase initialState, BrainComponentBase brain)
-        {
-            CurrentState = initialState;
-            Brain = brain;
+                DrawOrigin,
+                Texture);
         }
     }
 }
