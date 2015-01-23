@@ -8,9 +8,7 @@ namespace DerpinDragons.Entities.Animations
 {
     public enum AnimationDefinitions
     {
-        Vitruvian,
-
-        Idle,
+        Idle = 0,
         Moving,
 
         Dead,

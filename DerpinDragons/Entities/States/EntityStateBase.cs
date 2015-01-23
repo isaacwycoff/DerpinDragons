@@ -11,7 +11,7 @@ namespace DerpinDragons.Entities.States
     public abstract class EntityStateBase
     {
         protected Entity Context;
-        protected Animation CurrentAnimation;
+        protected AnimationSystem CurrentAnimation;
 
         protected EntityStateBase(Entity entity)
         {

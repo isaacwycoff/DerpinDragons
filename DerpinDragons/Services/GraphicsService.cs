@@ -56,7 +56,7 @@ namespace DerpinDragons.Services
             foreach (var entity in drawableEntities)
             {
                 var drawInfo = entity.GetRenderInfo();
-                SpriteBatch.Draw(drawInfo.Texture, drawInfo.DrawPosition, null, Color.White, 0f, drawInfo.Origin, 1f, SpriteEffects.None, .5f);
+                SpriteBatch.Draw(drawInfo.Texture, drawInfo.DrawPosition, drawInfo.SourceRectangle, Color.White, 0f, drawInfo.Origin, drawInfo.Scale, SpriteEffects.None, .5f);
             }
 
             SpriteBatch.DrawString(ContentService.FixedFont, "DERPIN' DRAGONS", Vector2.Zero, Color.AntiqueWhite);

@@ -20,11 +20,10 @@ namespace DerpinDragons.Services
         public static Texture2D DerpyDwarf;
 
         //animations
-        public static Dictionary<AnimationDefinitions, Animation> DerpyDwarfAnimationSet;
+        public static AnimationFrame[][] DerpyDwarfAnimationSet;
 
         //fonts
         public static SpriteFont FixedFont;
-
 
 
         public static void LoadAllTextures(ContentManager content)
@@ -32,35 +31,29 @@ namespace DerpinDragons.Services
             DevTexture = content.Load<Texture2D>("DevTexture");//we always assume this will load, I'm committing it to the repo
             DevFont = content.Load<SpriteFont>("DevFont"); //same with this one
 
-            DerpyDwarf = SafeLoadTexture(content, "DerpyDwarf");
+            DerpyDwarf = SafeLoadTexture(content, "Hero_1a");
             FixedFont = SafeLoadFont(content, "FixedFont");
 
             DerpyDwarfAnimationSet = SafeLoadAnimationSet("DerpyDwarf");
         }
 
-        private static Dictionary<AnimationDefinitions, Animation> SafeLoadAnimationSet(string fileName)
+        private static AnimationFrame[][] SafeLoadAnimationSet(string fileName)
         {
             //TODO this should be loaded from a file, but for now it's hardcoded
-
-            return new Dictionary<AnimationDefinitions, Animation>()
+            return new AnimationFrame[][]
             {
-                { 
-                    AnimationDefinitions.Idle, 
-                    new Animation(new AnimationFrame[] 
-                    {
+                new AnimationFrame[]
+                {
+                        new AnimationFrame(
+                            1000, 
+                            new []{ new Vector2(200,200) },
+                            new []{ new Vector2(1,1) },
+                            new Rectangle[]{ new Rectangle(8,8,8,8) }),
                         new AnimationFrame(
                             1000, 
                             new []{ new Vector2(20,20) },
                             new []{ new Vector2(1,1) },
-                            new Rectangle?[]{ null },
-                            new []{ DevTexture }),
-                        new AnimationFrame(
-                            1000, 
-                            new []{ new Vector2(20,20) },
-                            new []{ new Vector2(1,1) },
-                            new Rectangle?[]{ null },
-                            new []{ DevTexture })
-                    })
+                            new Rectangle[]{ new Rectangle(0,0,8,8) })
                 }
             };
         }
